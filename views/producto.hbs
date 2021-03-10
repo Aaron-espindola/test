@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        {{#each producto}}
+        <div class="card" style="width: 18rem;">
+            <img src="imagenes/{{uuid}}" class="card-img-top" alt="no se pudo mostrar la imagen">
+            <div class="card-body">
+        <h5 class="card-title">{{nombre}}</h5>
+    <p class="card-text">{{descripcion}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+        {{/each}}
+    </div>
+    
+</div>

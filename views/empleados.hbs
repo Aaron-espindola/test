@@ -1,0 +1,60 @@
+{{#if status}}
+<div class="container">
+    <button class="btn btn-danger" type="button"><a href="/empleados/create"> CREAR EMPLEADO </a></button>
+    <button class="btn btn-danger" type="button"><a href="/empleados/disabled"> EMPLEADOS DESHABILITADOS</a></button>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombre de sucursal</th>
+                    <th scope="col">Ver mas</th>
+                    <th scope="col">Modificar</th>
+                    <th scope="col">Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each empleados}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{apellido}}</td>
+                    <td>{{nombreSucursal}}</td>
+                    <td><a href="/empleados/single/{{id}}">Ver Mas</a></td>
+                    <td><a href="/empleados/update/{{id}}">Modificar</a></td>
+                    <td><a href="/empleados/delete/{{id}}">Borrar</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{{else}}
+<div class="container">
+    <button class="btn btn-danger" type="button"><a href="/empleados"> EMPLEADOS HABILITADOS</a></button>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombre de sucursal</th>
+                    <th scope="col">Habilitar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each empleados}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{apellido}}</td>
+                    <td>{{nombreSucursal}}</td>
+                    <td><a href="/empleados/disabled/{{id}}">Habilitar</a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{{/if}}
