@@ -5,17 +5,18 @@ const allawExtension = ["png" , "jpg"];
 const deleteTmp = (file) => fs.unlink(file, e => console.log(e));
 
 
-const saveFile = ({mimeype, size, path}, extension, destFolder = './public/images') => {
+const saveFile = ({mimetype, size, path}, extension, destFolder = './public/images') => {
     try{
-    const [type, ext] = MimeType.split("/");
+    const [type, ext] = mimetype.split("/");
     if(!extension.includes(ext)){
         throw new Error("Formato incorrecto");
     }
     const uid = uuid();
-    const fileNameOut = `${destFolder}/${uid}.${ext}`
+    const fileName = `${uid}.${ext}`;
+    const fileNameOut = `${destFolder}/${fileName}`;
     fs.createReadStream(path).pipe(fs.createWriteStream(fileNameOut));
     deleteTmp(path);
-    return fileNameOut;
+    return fileName;
     }
     catch(e){
         console.error(e);

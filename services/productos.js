@@ -3,7 +3,7 @@ const {imgFile} = require('./../utils/fileHandler')
 
 const createProducto = async ()=>{
     try{
-        const {insertid: idProducto} = await create (body);
+        const {insertid : idProducto} = await create(body);
         const uid= imgFile(file);
         const obj = {idProducto, uid};
         const {insertid : idFile} = await createImg(obj);
@@ -17,4 +17,4 @@ const createProducto = async ()=>{
 }
 
 
-module.exports = {createProducto}
+module.exports = {createProducto};

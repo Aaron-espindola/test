@@ -4,18 +4,26 @@ const T_PRODUCTOS_IMAGENES = "productos_imgenes"
 
 //reutilizo mi funcion get del otro model y la adapto a mi nueva tabla
 const get = async () => {
-    const query = "SELECT * FROM ??";
-    const params = [TABLA_PRODUCTOS];
+    const query = "SELECT p.*, p_i.uid FROM ?? AS p JOIN ?? AS p_i ON p.i.idProducto";
+    const params = [TABLA_PRODUCTOS, T_PRODUCTOS_IMAGENES];
     // la query me devuelve un objeto o conjunto de filas Data Row Package en un [{}]
     const rows = await pool.query(query, params);
     return rows;
 }
+
 const create = async (obj) => {
     const query= " INSERT INTO ?? SET ? "
     const params =[TABLA_PRODUCTOS, obj];
-    return await pool.query(query, params);
+    const rows = await pool.query(query, params);
+    return rows;
 }
-const createImg = async () => {
+
+const createImg = async (obj) => {
     pool.query("INSERT INTO ?? SET ?",[T_PRODUCTOS_IMAGENES,obj]).then((response) => response) .catch((e) => console.log(e));
+
 }
+
+
+
+
 module.exports = {get, create, createImg}
